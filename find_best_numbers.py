@@ -77,5 +77,5 @@ if __name__ == "__main__":
 
     print(f"\nDie {args.results} besten Kennziffern-Kombinationen mit den meisten gemeinsamen Heimspieltagen:\n")
     for (number1, number2), count, weekends in best:
-        print(f"Kennziffer {number1} (Team 1) & Kennziffer {number2} (Team 2) → {count} gemeinsame Heimspieltage")
+        print(f"Kennziffer {number1} (Mannschaft 1) & Kennziffer {number2} (Mannschaft 2) → {count} gemeinsame Heimspieltage")
         print(f"  Gemeinsame Heimspieltage: {', '.join(weekends)}\n")
