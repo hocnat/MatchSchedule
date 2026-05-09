@@ -34,9 +34,32 @@ Kennziffer 5 (Mannschaft 1) & Kennziffer 8 (Mannschaft 2) → 7 gemeinsame Heims
   Gemeinsame Heimspieltage: 14./15.09.2024, 28./29.09.2024, 02./03.11.2024, 14./15.12.2024, 15./16.02.2025, 15./16.03.2025, 05./06.04.2025
 ```
 
-### ?
+### Kennzifferoptimierung (schlechteste Kombinationen)
 
-...
+Dieses Tool findet die Kennziffern-Kombinationen mit den wenigsten gemeinsamen Heimspieltagen für zwei Mannschaften:
+
+```shell
+Die 3 schlechtesten Kennziffern-Kombinationen mit den wenigsten gemeinsamen Heimspieltagen:
+
+Kennziffer 5 (Mannschaft 1) & Kennziffer 3 (Mannschaft 2) → 1 gemeinsame Heimspieltage
+  Gemeinsame Heimspieltage: 25./26.01.2025
+
+Kennziffer 7 (Mannschaft 1) & Kennziffer 3 (Mannschaft 2) → 1 gemeinsame Heimspieltage
+  Gemeinsame Heimspieltage: 25./26.01.2025
+
+Kennziffer 9 (Mannschaft 1) & Kennziffer 3 (Mannschaft 2) → 1 gemeinsame Heimspieltage
+  Gemeinsame Heimspieltage: 05./06.10.2024
+```
+
+### Anzeige gemeinsamer Heimspieltage
+
+Für zwei feste Kennziffern werden alle gemeinsamen Heimspieltage angezeigt:
+
+```shell
+Gemeinsame Heimspieltage für Kennziffer 5 (Mannschaft 1) & Kennziffer 10 (Mannschaft 2):
+  Anzahl: 8
+  Wochenenden: 14./15.09.2024, 28./29.09.2024, 02./03.11.2024, 16./17.11.2024, 14./15.12.2024, 15./16.02.2025, 15./16.03.2025, 05./06.04.2025
+```
 
 ## Verwendung
 
@@ -68,15 +91,35 @@ Das Tool zur Ermittlung optimaler Kennziffern für zwei Mannschaften wird mit fo
 python .\find_best_numbers.py --seasonCalendarTeam1 SEASONCALENDARTEAM1 --rasterTeam1 RASTERTEAM1 [--fixedNumberTeam1 FIXEDNUMBERTEAM1] --seasonCalendarTeam2 SEASONCALENDARTEAM2 --rasterTeam2 RASTERTEAM2 [--fixedNumberTeam2 FIXEDNUMBERTEAM2] [--results RESULTS]
 ```
 
+Das Tool zur Ermittlung der schlechtesten Kennziffern-Kombinationen wird mit folgendem Befehl ausgeführt:
+
+```shell
+python .\find_worst_numbers.py --seasonCalendarTeam1 SEASONCALENDARTEAM1 --rasterTeam1 RASTERTEAM1 [--fixedNumberTeam1 FIXEDNUMBERTEAM1] --seasonCalendarTeam2 SEASONCALENDARTEAM2 --rasterTeam2 RASTERTEAM2 [--fixedNumberTeam2 FIXEDNUMBERTEAM2] [--results RESULTS]
+```
+
+Das Tool zur Anzeige gemeinsamer Heimspieltage für feste Kennziffern wird mit folgendem Befehl ausgeführt:
+
+```shell
+python .\get_common_home_match_days.py --seasonCalendarTeam1 SEASONCALENDARTEAM1 --rasterTeam1 RASTERTEAM1 --fixedNumberTeam1 FIXEDNUMBERTEAM1 --seasonCalendarTeam2 SEASONCALENDARTEAM2 --rasterTeam2 RASTERTEAM2 --fixedNumberTeam2 FIXEDNUMBERTEAM2
+```
+
 #### Parameter
 
-* `--seasonCalendarTeam1`: CSV-Datei mit Saisonkalender der 1. Mannschaft
-* `--rasterTeam1`: YAML-Datei mit Raster der 1. Mannschaft
-* `--fixedNumberTeam1`: Feste Kennziffer für 1. Mannschaft (optional)
-* `--seasonCalendarTeam2`: CSV-Datei mit Saisonkalender der 2. Mannschaft
-* `--rasterTeam2`: YAML-Datei mit Raster der 2. Mannschaft
-* `--fixedNumberTeam2`: Feste Kennziffer für 2. Mannschaft (optional)
-* `--results`: Anzahl der auszugebenden Ergebnisse (optional, Standardwert: 3)
+- `--seasonCalendarTeam1`: CSV-Datei mit Saisonkalender der 1. Mannschaft
+- `--rasterTeam1`: YAML-Datei mit Raster der 1. Mannschaft
+- `--fixedNumberTeam1`: Feste Kennziffer für 1. Mannschaft (optional für find_best/worst, erforderlich für get_common)
+- `--seasonCalendarTeam2`: CSV-Datei mit Saisonkalender der 2. Mannschaft
+- `--rasterTeam2`: YAML-Datei mit Raster der 2. Mannschaft
+- `--fixedNumberTeam2`: Feste Kennziffer für 2. Mannschaft (optional für find_best/worst, erforderlich für get_common)
+- `--results`: Anzahl der auszugebenden Ergebnisse (optional, Standardwert: 3, nur für find_best/worst)
+
+- `--seasonCalendarTeam1`: CSV-Datei mit Saisonkalender der 1. Mannschaft
+- `--rasterTeam1`: YAML-Datei mit Raster der 1. Mannschaft
+- `--fixedNumberTeam1`: Feste Kennziffer für 1. Mannschaft (optional)
+- `--seasonCalendarTeam2`: CSV-Datei mit Saisonkalender der 2. Mannschaft
+- `--rasterTeam2`: YAML-Datei mit Raster der 2. Mannschaft
+- `--fixedNumberTeam2`: Feste Kennziffer für 2. Mannschaft (optional)
+- `--results`: Anzahl der auszugebenden Ergebnisse (optional, Standardwert: 3)
 
 #### Saisonkalender
 
@@ -144,8 +187,8 @@ python .\find_best_numbers.py --seasonCalendarTeam1 .\Saisonkalender\Regionallig
 
 ## Verwendete Tools
 
-* [ChatGPT](https://chatgpt.com/) - OpenAI
-* [Python](https://www.python.org/) - Python Software Foundation - Python Software Foundation License
+- [ChatGPT](https://chatgpt.com/) - OpenAI
+- [Python](https://www.python.org/) - Python Software Foundation - Python Software Foundation License
 
 ## License
 

@@ -2,7 +2,7 @@ import argparse
 from match_schedule_utils import load_season_calendar, load_raster, validate_data, find_combinations
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Finde die besten Kennziffern für gemeinsame Heimspieltage.")
+    parser = argparse.ArgumentParser(description="Finde die schlechtesten Kennziffern für gemeinsame Heimspieltage.")
 
     parser.add_argument("--seasonCalendarTeam1", required=True, help="CSV-Datei mit Saisonkalender der 1. Mannschaft")
     parser.add_argument("--rasterTeam1", required=True, help="YAML-Datei mit Raster der 1. Mannschaft")
@@ -24,9 +24,9 @@ if __name__ == "__main__":
     validate_data(seasonCalendarTeam1, rasterTeam1, "Mannschaft 1")
     validate_data(seasonCalendarTeam2, rasterTeam2, "Mannschaft 2")
 
-    best = find_combinations(seasonCalendarTeam1, rasterTeam1, seasonCalendarTeam2, rasterTeam2, args.results, args.fixedNumberTeam1, args.fixedNumberTeam2, mode="best")
+    worst = find_combinations(seasonCalendarTeam1, rasterTeam1, seasonCalendarTeam2, rasterTeam2, args.results, args.fixedNumberTeam1, args.fixedNumberTeam2, mode="worst")
 
-    print(f"\nDie {args.results} besten Kennziffern-Kombinationen mit den meisten gemeinsamen Heimspieltagen:\n")
-    for (number1, number2), count, weekends in best:
+    print(f"\nDie {args.results} schlechtesten Kennziffern-Kombinationen mit den wenigsten gemeinsamen Heimspieltagen:\n")
+    for (number1, number2), count, weekends in worst:
         print(f"Kennziffer {number1} (Mannschaft 1) & Kennziffer {number2} (Mannschaft 2) → {count} gemeinsame Heimspieltage")
         print(f"  Gemeinsame Heimspieltage: {', '.join(weekends)}\n")
